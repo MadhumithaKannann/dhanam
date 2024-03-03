@@ -59,3 +59,20 @@ When(`I click on the submit button`,()=>{
     cy.log(`${value}`);
     cy.get('textarea.feedback-input').type(`${comment} and the number is ${value}`);
   })
+
+
+When(`I type a {string} and a last name {string}`,(firstName:string, lastName:string)=>{
+cy.log(`${firstName} ${lastName}`)
+cy.get('[name="first_name"]').type(firstName);
+cy.get('[name="last_name"]').type(lastName);
+})
+
+When(`I type a email {string} and a comment {string}`,(emailAddress:string, comment:string)=>{
+    cy.get('[name="email"]').type(emailAddress);
+    cy.get('textarea.feedback-input').type(`${comment}`);
+})
+
+Then(`I should be presented with header test {string}`,(message:string)=>{
+    cy.get('h1').should('have.text',message)
+})
+
